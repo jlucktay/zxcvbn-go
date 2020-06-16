@@ -9,12 +9,17 @@ tasks:
     deps:
       - task: test
 
-  test:
-    cmds:
-      - go test $(go list ./... | grep -v "zxcvbn-go/data")
-    desc: Run `go test {package list}`
-
   lint:
     cmds:
-      - golangci-lint run
+      - golangci-lint run --verbose
     desc: Run `golangci-lint run`
+
+  build:
+    cmds:
+      - go build -v ./...
+    desc: Run `go build`
+
+  test:
+    cmds:
+      - go test -v $(go list ./... | grep -v "zxcvbn-go/data")
+    desc: Run `go test`
