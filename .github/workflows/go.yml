@@ -21,9 +21,6 @@ jobs:
       - name: Install Taskfile
         uses: Arduino/actions/setup-taskfile@master
 
-      - name: Lint
-        run: task lint
-
       - name: Build
         run: task build
 
