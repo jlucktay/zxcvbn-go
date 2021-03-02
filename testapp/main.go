@@ -9,19 +9,26 @@ import (
 )
 
 func main() {
-	fmt.Println("Enter password:")
-	reader := bufio.NewReader(os.Stdin)
-	password, _ := reader.ReadString('\n')
-	// password := "Testaaatyhg890l33t"
+	for {
+		fmt.Println("Enter password or Ctrl-c to exit:")
 
-	passwordStenght := zxcvbn.PasswordStrength(password, nil)
+		reader := bufio.NewReader(os.Stdin)
 
-	fmt.Printf(
-		`Password score    (0-4): %d
-Estimated entropy (bit): %f
-Estimated time to crack: %s%s`,
-		passwordStenght.Score,
-		passwordStenght.Entropy,
-		passwordStenght.CrackTimeDisplay, "\n",
-	)
+		password, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "could not read string: %v", err)
+
+			return
+		}
+
+		// password := "Testaaatyhg890l33t"
+
+		passwordStrength := zxcvbn.PasswordStrength(password, nil)
+
+		fmt.Printf("Password score    (0-4): %d\nEstimated entropy (bit): %f\nEstimated time to crack: %s\n\n",
+			passwordStrength.Score,
+			passwordStrength.Entropy,
+			passwordStrength.CrackTimeDisplay,
+		)
+	}
 }

@@ -57,7 +57,7 @@ Use `zxcvbn_test.go` to check how close to feature parity the project is.
 
 ## Acknowledgment
 
-Thanks to Dan Wheeler (https://github.com/lowe) for the CoffeeScript implementation (see above.)
+Thanks to Dan Wheeler (<https://github.com/lowe>) for the CoffeeScript implementation (see above.)
 To repeat his outside acknowledgements (which remain useful, as always):
 
 Many thanks to Mark Burnett for releasing his 10k top passwords list:
