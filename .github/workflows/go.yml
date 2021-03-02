@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Test and lint and build
 
     runs-on: ubuntu-latest
 
@@ -19,30 +19,9 @@ jobs:
         uses: actions/setup-go@v2
         id: go
 
-      - name: Check out code into the Go module directory
+      - name: Check out code
         uses: actions/checkout@v2
-
-      - name: Install Taskfile
-        uses: Arduino/actions/setup-taskfile@master
-
-      - name: Build
-        run: task build
-
-      - name: Test
-        run: task test
-
-  golangci:
-    name: Lint
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
-        with:
-          version: latest
-          only-new-issues: true
+      - run: make all
