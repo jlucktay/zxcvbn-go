@@ -5,7 +5,7 @@ on:
     tags:
       - v*
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -38,10 +38,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v1
+        uses: golangci/golangci-lint-action@v2
         with:
-          # Required: the version of golangci-lint is required and must be specified without patch version.
-          # We always use the latest patch version.
-          version: v1.26
+          version: latest
+          only-new-issues: true
