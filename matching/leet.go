@@ -10,7 +10,7 @@ import (
 // L33TMatcherName id
 const L33TMatcherName = "l33t"
 
-//FilterL33tMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher
+// FilterL33tMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher
 func FilterL33tMatcher(m match.Matcher) bool {
 	return m.ID == L33TMatcherName
 }
@@ -219,7 +219,7 @@ func copyMap(table map[string]string) map[string]string {
 
 // This function creates a new map based on the one provided but excluding possible representations
 // of the same value on other keys.
-func copyMapRemovingSameValueFromOtherKeys(table map[string][]string, keyToFix string, valueToFix string) map[string][]string {
+func copyMapRemovingSameValueFromOtherKeys(table map[string][]string, keyToFix, valueToFix string) map[string][]string {
 	result := make(map[string][]string)
 
 	for key, values := range table {

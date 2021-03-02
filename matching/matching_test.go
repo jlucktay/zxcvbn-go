@@ -37,7 +37,7 @@ import (
 //}
 //
 func TestRepeatMatch(t *testing.T) {
-	//aaaBbBb
+	// aaaBbBb
 	matches := repeatMatch("aaabBbB")
 
 	assert.Len(t, matches, 2, "Lenght should be 2")
@@ -59,7 +59,7 @@ func TestRepeatMatch(t *testing.T) {
 }
 
 func TestSequenceMatch(t *testing.T) {
-	//abcdjibjacLMNOPjibjac1234  => abcd LMNOP 1234
+	// abcdjibjacLMNOPjibjac1234  => abcd LMNOP 1234
 
 	matches := sequenceMatch("abcdjibjacLMNOPjibjac1234")
 	assert.Len(t, matches, 3, "Lenght should be 3")
@@ -94,14 +94,12 @@ func TestSpatialMatchQwerty(t *testing.T) {
 	matches = spatialMatch("asdf")
 	assert.Len(t, matches, 1, "Lenght should be 1")
 	assert.NotZero(t, matches[0].Entropy, "Entropy should be set")
-
 }
 
 func TestSpatialMatchDvorak(t *testing.T) {
 	matches := spatialMatch("aoeuidhtns")
 	assert.Len(t, matches, 1, "Lenght should be 1")
 	assert.NotZero(t, matches[0].Entropy, "Entropy should be set")
-
 }
 
 func TestDictionaryMatch(t *testing.T) {
@@ -114,9 +112,7 @@ func TestDictionaryMatch(t *testing.T) {
 	assert.Len(t, matches, 4, "Lenght should be 4")
 	for _, match := range matches {
 		assert.NotZero(t, match.Entropy, "Entropy should be set")
-
 	}
-
 }
 
 func TestDateWithoutSepMatch(t *testing.T) {
@@ -127,6 +123,6 @@ func TestDateWithoutSepMatch(t *testing.T) {
 	assert.Len(t, matches, 1, "Lenght should be 1")
 	log.Println(matches)
 
-	//matches := dateWithoutSepMatch("110991")
-	//assert.Len(t, matches, 21, "Lenght should be blarg")
+	// matches := dateWithoutSepMatch("110991")
+	// assert.Len(t, matches, 21, "Lenght should be blarg")
 }

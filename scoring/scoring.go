@@ -2,11 +2,12 @@ package scoring
 
 import (
 	"fmt"
+	"math"
+	"sort"
+
 	"github.com/nbutton23/zxcvbn-go/entropy"
 	"github.com/nbutton23/zxcvbn-go/match"
 	"github.com/nbutton23/zxcvbn-go/utils/math"
-	"math"
-	"sort"
 )
 
 const (
@@ -15,7 +16,7 @@ const (
 	//adjust for your site accordingly if you use another hash function, possibly by
 	//several orders of magnitude!
 	singleGuess     float64 = 0.010
-	numAttackers    float64 = 100 //Cores used to make guesses
+	numAttackers    float64 = 100 // Cores used to make guesses
 	secondsPerGuess float64 = singleGuess / numAttackers
 )
 
@@ -50,7 +51,7 @@ func MinimumEntropyMatchSequence(password string, matches []match.Match) MinEntr
 			}
 
 			i, j := match.I, match.J
-			//see if best entropy up to i-1 + entropy of match is less that current min at j
+			// see if best entropy up to i-1 + entropy of match is less that current min at j
 			upTo := get(upToK, i-1)
 			candidateEntropy := upTo + match.Entropy
 
@@ -62,7 +63,7 @@ func MinimumEntropyMatchSequence(password string, matches []match.Match) MinEntr
 		}
 	}
 
-	//walk backwards and decode the best sequence
+	// walk backwards and decode the best sequence
 	var matchSequence []match.Match
 	passwordLen := len(password)
 	passwordLen--
@@ -80,12 +81,13 @@ func MinimumEntropyMatchSequence(password string, matches []match.Match) MinEntr
 	sort.Sort(match.Matches(matchSequence))
 
 	makeBruteForceMatch := func(i, j int) match.Match {
-		return match.Match{Pattern: "bruteforce",
+		return match.Match{
+			Pattern: "bruteforce",
 			I:       i,
 			J:       j,
 			Token:   password[i : j+1],
-			Entropy: math.Log2(math.Pow(bruteforceCardinality, float64(j-i)))}
-
+			Entropy: math.Log2(math.Pow(bruteforceCardinality, float64(j-i))),
+		}
 	}
 
 	k := 0
@@ -110,14 +112,16 @@ func MinimumEntropyMatchSequence(password string, matches []match.Match) MinEntr
 	}
 
 	crackTime := roundToXDigits(entropyToCrackTime(minEntropy), 3)
-	return MinEntropyMatch{Password: password,
+	return MinEntropyMatch{
+		Password:         password,
 		Entropy:          roundToXDigits(minEntropy, 3),
 		MatchSequence:    matchSequenceCopy,
 		CrackTime:        crackTime,
 		CrackTimeDisplay: displayTime(crackTime),
-		Score:            crackTimeToScore(crackTime)}
-
+		Score:            crackTimeToScore(crackTime),
+	}
 }
+
 func get(a []float64, i int) float64 {
 	if i < 0 || i >= len(a) {
 		return float64(0)
