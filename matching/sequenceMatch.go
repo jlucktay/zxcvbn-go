@@ -9,7 +9,7 @@ import (
 
 const sequenceMatcherName = "SEQ"
 
-// FilterSequenceMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher
+// FilterSequenceMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher.
 func FilterSequenceMatcher(m match.Matcher) bool {
 	return m.ID == sequenceMatcherName
 }

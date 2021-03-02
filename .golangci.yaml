@@ -3,6 +3,7 @@ issues:
   exclude:
     - ^exported var `Err[A-Za-z]+` should have comment or be unexported$
     - ^should have a package comment, unless it's in another file for this package$
+    - ".* Line contains TODO/BUG/FIXME: .*$"
   max-issues-per-linter: 0
   max-same-issues: 0
   new-from-rev: origin/main

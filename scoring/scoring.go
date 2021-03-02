@@ -7,7 +7,7 @@ import (
 
 	"github.com/nbutton23/zxcvbn-go/entropy"
 	"github.com/nbutton23/zxcvbn-go/match"
-	"github.com/nbutton23/zxcvbn-go/utils/math"
+	zxcvbnmath "github.com/nbutton23/zxcvbn-go/utils/math"
 )
 
 const (
@@ -112,6 +112,7 @@ func MinimumEntropyMatchSequence(password string, matches []match.Match) MinEntr
 	}
 
 	crackTime := roundToXDigits(entropyToCrackTime(minEntropy), 3)
+
 	return MinEntropyMatch{
 		Password:         password,
 		Entropy:          roundToXDigits(minEntropy, 3),

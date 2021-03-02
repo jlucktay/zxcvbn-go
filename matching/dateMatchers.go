@@ -20,12 +20,12 @@ var (
 	dateWithOutSepMatch = regexp.MustCompile(`\d{4,8}`)
 )
 
-// FilterDateSepMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher
+// FilterDateSepMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher.
 func FilterDateSepMatcher(m match.Matcher) bool {
 	return m.ID == dateSepMatcherName
 }
 
-// FilterDateWithoutSepMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher
+// FilterDateWithoutSepMatcher can be pass to zxcvbn-go.PasswordStrength to skip that matcher.
 func FilterDateWithoutSepMatcher(m match.Matcher) bool {
 	return m.ID == dateWithOutSepMatcherName
 }
@@ -135,7 +135,7 @@ func dateWithoutSepMatch(password string) []match.Match {
 	return matches
 }
 
-// TODO Has issues with 6 digit dates
+// TODO Has issues with 6 digit dates.
 func dateWithoutSepMatchHelper(password string) (matches []match.DateMatch) {
 	for _, v := range dateWithOutSepMatch.FindAllString(password, len(password)) {
 		i := strings.Index(password, v)
