@@ -42,7 +42,8 @@ func repeatMatch(password string) []match.Match {
 				I:              iPos,
 				J:              jPos,
 				Token:          password[iPos : jPos+1],
-				DictionaryName: prev}
+				DictionaryName: prev,
+			}
 			matchRepeat.Entropy = entropy.RepeatEntropy(matchRepeat)
 			matches = append(matches, matchRepeat)
 			currentStreak = 1
@@ -61,7 +62,8 @@ func repeatMatch(password string) []match.Match {
 			I:              iPos,
 			J:              jPos,
 			Token:          password[iPos : jPos+1],
-			DictionaryName: prev}
+			DictionaryName: prev,
+		}
 		matchRepeat.Entropy = entropy.RepeatEntropy(matchRepeat)
 		matches = append(matches, matchRepeat)
 	}

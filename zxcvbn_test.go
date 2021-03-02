@@ -14,7 +14,6 @@ const (
 )
 
 func TestPasswordStrength(t *testing.T) {
-
 	//	Expected calculated by running zxcvbn-python
 	runTest(t, "zxcvbn", float64(6.845490050944376))
 	runTest(t, "Tr0ub4dour&3", float64(17.296))
@@ -57,7 +56,6 @@ func TestPasswordStrength(t *testing.T) {
 var formatString = "%s : error should be less than %.2f Acctual error: %.4f Expected entropy %.4f Actual entropy %.4f \n"
 
 func runTest(t *testing.T, password string, pythonEntropy float64) {
-
 	goEntropy := GoPasswordStrength(password, nil)
 	perror := math.Abs(goEntropy-pythonEntropy) / pythonEntropy
 

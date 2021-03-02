@@ -25,7 +25,7 @@ func NChoseK(n, k float64) float64 {
 }
 
 // Round a number
-func Round(val float64, roundOn float64, places int) (newVal float64) {
+func Round(val, roundOn float64, places int) (newVal float64) {
 	var round float64
 	pow := math.Pow(10, float64(places))
 	digit := pow * val
