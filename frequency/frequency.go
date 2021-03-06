@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/nbutton23/zxcvbn-go/data"
+	"go.jlucktay.dev/zxcvbn-go/data"
 )
 
 // List holds a frequency list

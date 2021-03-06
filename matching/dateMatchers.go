@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/nbutton23/zxcvbn-go/entropy"
-	"github.com/nbutton23/zxcvbn-go/match"
+	"go.jlucktay.dev/zxcvbn-go/entropy"
+	"go.jlucktay.dev/zxcvbn-go/match"
 )
 
 const (

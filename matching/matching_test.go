@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nbutton23/zxcvbn-go/match"
 	"github.com/stretchr/testify/assert"
+	"go.jlucktay.dev/zxcvbn-go/match"
 )
 
 //DateSepMatch("1991-09-11jibjab11.9.1991")
