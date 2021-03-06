@@ -61,12 +61,12 @@ Thanks to Dan Wheeler (<https://github.com/lowe>) for the CoffeeScript implement
 To repeat his outside acknowledgements (which remain useful, as always):
 
 Many thanks to Mark Burnett for releasing his 10k top passwords list:
-<http://xato.net/passwords/more-top-worst-passwords>
+<https://xato.net/passwords/more-top-worst-passwords>
 and for his 2006 book,
 "Perfect Passwords: Selection, Protection, Authentication"
 
 Huge thanks to Wiktionary contributors for building a frequency list of English as used in television and movies:
-<http://en.wiktionary.org/wiki/Wiktionary:Frequency_lists>
+<https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists>
 
 Last but not least, big thanks to xkcd :)
 <https://xkcd.com/936/>
