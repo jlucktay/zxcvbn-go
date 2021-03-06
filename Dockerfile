@@ -3,12 +3,6 @@ FROM golang:1.15 AS builder
 # Set some shell options for using pipes and such
 SHELL [ "/bin/bash", "-euo", "pipefail", "-c" ]
 
-# Install/update the common CA certificates package now, and blag it later
-RUN apt-get update \
-  && apt-get install --assume-yes --no-install-recommends ca-certificates \
-  && apt-get autoremove --assume-yes \
-  && rm -rf /root/.cache
-
 # Don't call any C code (the 'scratch' base image used later won't have any libraries to reference)
 ENV CGO_ENABLED=0
 
@@ -36,8 +30,7 @@ RUN go build -ldflags="-buildid= -w" -trimpath -v -o /bin/zxcvbn-go
 
 FROM scratch AS runner
 
-# Bring common CA certificates and binary over
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+# Bring binary over
 COPY --from=builder /bin/zxcvbn-go /bin/zxcvbn-go
 
 ENTRYPOINT [ "/bin/zxcvbn-go" ]
