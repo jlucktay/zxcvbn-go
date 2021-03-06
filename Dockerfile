@@ -26,7 +26,7 @@ COPY . .
 
 # Compile! Should only compile our project since everything else has been precompiled by now, and future
 # (re)compilations will leverage the same cached layer(s)
-RUN go build -ldflags="-buildid= -w" -trimpath -v -o /bin/zxcvbn-go
+RUN go build -ldflags="-buildid= -w" -trimpath -v -o /bin/zxcvbn-go go.jlucktay.dev/zxcvbn-go/testapp
 
 FROM scratch AS runner
 
