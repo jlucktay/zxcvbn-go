@@ -5,9 +5,9 @@ import (
 	"regexp"
 	"unicode"
 
-	"github.com/nbutton23/zxcvbn-go/adjacency"
-	"github.com/nbutton23/zxcvbn-go/match"
-	zxcvbnmath "github.com/nbutton23/zxcvbn-go/utils/math"
+	"go.jlucktay.dev/zxcvbn-go/adjacency"
+	"go.jlucktay.dev/zxcvbn-go/match"
+	zxcvbnmath "go.jlucktay.dev/zxcvbn-go/utils/math"
 )
 
 const (
