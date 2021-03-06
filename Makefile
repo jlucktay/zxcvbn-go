@@ -40,7 +40,7 @@ build-binary: $(binary_name) ## Build a bare binary only, without a Docker image
 
 clean: ## Clean up the built binary, test coverage, and the temp and output sub-directories.
 > go clean -x -v
-> rm -rf cover.out tmp out
+> rm -rf $(binary_name) cover.out tmp out
 .PHONY: clean
 
 clean-docker: ## Clean up any built Docker images.
@@ -101,4 +101,4 @@ out/image-id: Dockerfile tmp/.linted.sentinel
 > echo "$${image_id}" > out/image-id
 
 $(binary_name): tmp/.linted.sentinel
-> go build -ldflags="-buildid= -w" -trimpath -v
+> go build -ldflags="-buildid= -w" -trimpath -v -o $(binary_name) go.jlucktay.dev/zxcvbn-go/testapp
