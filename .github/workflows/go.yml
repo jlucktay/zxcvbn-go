@@ -49,3 +49,8 @@ jobs:
         if: ${{ matrix.platform == 'macos-latest' }}
 
       - run: make all
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
+
+      # Cannot use Docker on macOS runners: https://github.community/t/why-is-docker-not-installed-on-macos/17017
+      - run: make test
+        if: ${{ matrix.platform == 'macos-latest' }}
