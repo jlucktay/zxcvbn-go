@@ -36,4 +36,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Update 'make' on Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get --only-upgrade install build-essential
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
+
+      - name: Install 'make' on macOS
+        run: |
+          brew install make
+          echo "/usr/local/opt/make/libexec/gnubin" >> $GITHUB_PATH
+        if: ${{ matrix.platform == 'macos-latest' }}
+
       - run: make all
