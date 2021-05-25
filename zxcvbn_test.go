@@ -53,7 +53,7 @@ func TestPasswordStrength(t *testing.T) {
 	runTest(t, "Ba9ZyWABu99[BK#6MBgbH88Tofv)vs$", float64(161.278))
 }
 
-var formatString = "%s : error should be less than %.2f Acctual error: %.4f Expected entropy %.4f Actual entropy %.4f \n"
+var formatString = "%s: error should be less than %.2f Actual error: %.4f Expected entropy %.4f Actual entropy %.4f\n"
 
 func runTest(t *testing.T, password string, pythonEntropy float64) {
 	goEntropy := GoPasswordStrength(password, nil)

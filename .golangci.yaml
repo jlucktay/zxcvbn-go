@@ -39,9 +39,6 @@ linters-settings:
   gofumpt:
     extra-rules: true
 
-  golint:
-    min-confidence: 0
-
   govet:
     check-shadowing: true
     enable-all: true
@@ -64,6 +61,9 @@ linters-settings:
     allow-leading-space: false
     require-explanation: true
     require-specific: true
+
+  revive:
+    min-confidence: 0
 
   unparam:
     check-exported: true
@@ -99,7 +99,7 @@ linters:
     - goerr113
     - gofmt
     - gofumpt
-    - golint
+    - revive
     - gosec
     - gosimple
     - govet
