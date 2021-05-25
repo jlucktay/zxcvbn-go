@@ -47,6 +47,5 @@ jobs:
       - name: Install 'make' and run 'make test' on macOS
         run: |
           brew install make
-          echo "/usr/local/opt/make/libexec/gnubin" >> $GITHUB_PATH
-          make test
+          /usr/local/opt/make/libexec/gnubin/make test
         if: ${{ matrix.platform == 'macos-latest' }}
